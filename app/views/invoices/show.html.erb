@@ -29,10 +29,13 @@
   </tr>
   <% end %>
 </table>
+    <div style="width:400px">
+      <h3>Add Item</h3>
+      <%= render "items/form", item: @item %> 
+    </div>
   </div>
   <div  class="invoice-item-add">
-  <h3>Add Item</h3>
-       <%= render "items/form", item: @item %>
+  <h3>Invoice Actions</h3> 
   </div>
   </div>
   </div>  

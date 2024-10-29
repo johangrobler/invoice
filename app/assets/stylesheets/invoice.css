@@ -1,0 +1,47 @@
+.invoice {
+  display: flex;
+}
+
+
+.invoice-details {
+  flex: 1;
+}
+
+.form-flex-row {
+  margin: 20px 0 100px -20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.form-flex-row input {
+  margin: 5px 0 10px 0;
+
+}
+
+.form-flex-row div {
+  margin-right: 20px;
+}
+
+.i-description {
+  width: 300px;
+}
+
+.i-price {
+  width: 100px;
+}
+
+.i-qty {
+  width: 50px;
+}
+
+.i-add {
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 800px) {
+  .invoice {
+    display: flex;
+    flex-direction: column;
+  }
+
+}

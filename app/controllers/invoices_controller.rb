@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
     pdf = generate_pdf
 
     # Send the generated PDF to the browser as a download
-    send_data pdf.render, filename: "document.pdf", type: "application/pdf", disposition: "attachment"
+    send_data pdf.render, filename: "invoice-#{@invoice.customer.name}-#{@invoice.invoice_date}.pdf", type: "application/pdf", disposition: "attachment"
   end
 
   # GET /invoices/new
@@ -86,33 +86,38 @@ class InvoicesController < ApplicationController
   # Create a new PDF document
   Prawn::Document.new(page_size: 'A4') do |pdf|
     # Title and Invoice Details
-    pdf.text "Invoice ", size: 24, style: :bold
-    pdf.move_down 20
-    pdf.text "Date: #{invoice.created_at.strftime('%B %d, %Y')}", size: 12
+
+    pdf.text "Invoice #: #{invoice.id}", size: 12, align: :right
+    pdf.text "#{invoice.company.name}", size: 14, style: :bold, align: :left
     pdf.move_down 10
+    pdf.text "INVOICE ", size: 32, style: :bold, align: :left
+  
+    pdf.move_down 5
+    pdf.text "Date: #{invoice.created_at.strftime('%B %d, %Y')}", size: 12
+    pdf.move_down 2
     pdf.text "Invoice #: #{invoice.id}", size: 12
 
     pdf.move_down 20
     pdf.text "From ", size: 14, style: :bold
     pdf.move_down 5
-    pdf.text "#{invoice.company.name}", size: 12   , style: :bold
-    pdf.text "#{invoice.company.address}", size: 12   
-    pdf.text "Phone: #{invoice.company.phone}", size: 12   
-    pdf.text "Email: #{invoice.company.email}", size: 12  
+    pdf.text "#{invoice.company.name}", size: 11   , style: :bold
+    pdf.text "#{invoice.company.address}", size: 11   
+    pdf.text "Phone: #{invoice.company.phone}", size: 11   
+    pdf.text "Email: #{invoice.company.email}", size: 11  
 
     pdf.move_down 20
     
     pdf.text "To ", size: 14, style: :bold
     pdf.move_down 5
-    pdf.text "#{invoice.customer.name}", size: 12   , style: :bold
-    pdf.text "#{invoice.customer.address}", size: 12 
+    pdf.text "#{invoice.customer.name}", size: 11   , style: :bold
+    pdf.text "#{invoice.customer.address}", size: 11 
     
-    pdf.text "Email: #{invoice.customer.email}", size: 12  
-    pdf.text "Phone: #{invoice.customer.phone}", size: 12  
+    pdf.text "Email: #{invoice.customer.email}", size: 11  
+    pdf.text "Phone: #{invoice.customer.phone}", size: 11  
     pdf.move_down 20
 
     # Table Headers
-    pdf.text "Invoice Items", size: 16, style: :bold
+    pdf.text "Invoice Details", size: 16, style: :bold
     pdf.move_down 10
 
     # Table Content

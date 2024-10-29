@@ -55,6 +55,23 @@ input[type="submit"]:hover {
 
 * {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+p {
+  margin: 12px 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+a:hover {
+  color: var(--accent-color);
 }
 
 table {
@@ -70,28 +87,24 @@ th {
   padding: 16px;
 }
 
-.invoice {
-  display: flex;
-}
 
-
-.invoice-details {
-  flex: 1;
-}
 
 header,
 main {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 header {
+  height: 90px;
   display: flex;
   align-items: center;
 }
 
 header h1 {
-  flex: 1;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-right: 60px;
 }
 
 header a {
@@ -103,6 +116,7 @@ header a {
 .header {
   display: flex;
   align-items: center;
+  height: 80px;
 }
 
 .header h1 {
@@ -122,4 +136,29 @@ header a {
 .header a:hover {
 
   background-color: #ddd;
+}
+
+nav {
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+
+  header,
+  main {
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    height: 80px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table {
+    width: 100vw;
+    border-collapse: collapse;
+    margin: 40px 0;
+  }
 }

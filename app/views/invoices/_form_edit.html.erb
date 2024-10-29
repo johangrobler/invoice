@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
   <div>
     <%= form.label :company_id, style: "display: block" %>
     <%= form.collection_select :company_id,  current_user.companies.order('name'), :id,:name  %>

@@ -1,0 +1,28 @@
+.block {
+  background-color: whitesmoke;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  color: #313131;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.button {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  color: white;
+  width: 320px;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+.button:hover {
+  color: white;
+  background-color: var(--accent-color);
+}

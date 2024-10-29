@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
+  get "home/index"
+  get "about" , to: "home#about"
+  get "pricing" , to: "home#pricing"
+  get "contact" , to: "home#contact"
+  get "dashboard" , to: "dashboard#index"
+ 
   devise_for :users
   resources :items
   resources :invoices
@@ -16,6 +23,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "invoices#index"
-    get 'invoices/:id/download', to: 'invoices#download_pdf', as: 'download_pdf'
+  root "home#index"
+  
+  get 'invoices/:id/download', to: 'invoices#download_pdf', as: 'download_pdf'
 end

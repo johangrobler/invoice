@@ -1,0 +1,19 @@
+
+<% content_for :title, "Dashboard" %>
+
+<div class="header">
+<h1>Dashboard</h1>
+<a href="/invoices/new">Create Invoice</a>
+</div>
+
+
+<h2>Become a Sponsor</h2>
+
+<br>
+<a href="https://paystack.com/pay/1lyjtmikls" class="button" >SPONSOR PROJECT</a>
+
+<p>Powered by PayStack</p>
+
+
+<h2>Account</h2> 
+<%= button_to "Logout", destroy_user_session_path, :method => :delete ,class:"signup"  %>

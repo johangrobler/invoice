@@ -10,10 +10,16 @@
   <table>
   <% @customers.each do |customer| %>
     <tr> 
+
+
+        <td width="60"> <%= link_to customer do %>
+            <div class="block"><%=customer.name[0] %></div>
+          <% end %>
+        </td>
         <td><%=link_to customer.name ,customer %></td>
         <td><%=customer.email%></td>
         <td><%=customer.phone%></td> 
-        <td><%=customer.created_at%> </td>
+        <td><%=time_ago_in_words customer.created_at%> ago</td>
         <td> <%= link_to "Edit", edit_customer_path(customer) %></td>
   <% end %>
   </table>

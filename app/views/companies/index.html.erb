@@ -11,10 +11,15 @@
   <table>
   <% @companies.each do |company| %>
     <tr> 
+
+        <td width="60"> <%= link_to company do %>
+            <div class="block"><%=company.name[0] %></div>
+          <% end %>
+        </td>
         <td><%=link_to company.name ,company %></td>
         <td><%=company.email%></td>
         <td><%=company.phone%></td> 
-        <td><%=company.created_at%> </td>
+        <td><%=time_ago_in_words company.created_at%> ago</td>
         <td> <%= link_to "Edit", edit_company_path(company) %></td>
   <% end %>
   </table>

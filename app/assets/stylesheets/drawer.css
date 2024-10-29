@@ -1,0 +1,18 @@
+.drawer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -300px;
+  width: 300px;
+  background-color: whitesmoke;
+  padding: 100px 40px;
+  transition: left 0.3s ease-in-out
+}
+
+.drawer a {
+  padding: 20px 0;
+  text-decoration: none;
+  color: #313131;
+}

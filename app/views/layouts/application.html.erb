@@ -24,12 +24,78 @@
 
   <body>
   <header>
-    <h1><%=image_tag 'logo.svg' %></h1>
-    <a href="/invoices">Invoices</a>
-    <a href="/customers">Customers</a>
-    <a href="/companies">Companies</a>
-    <a href="/banks">Banks</a>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    
+    <h1>QuoteMe</h1>
+    <nav>
+        
+        <%if user_signed_in? %>
+        <a href="/dashboard" class="menu">Dashboard</a>
+        <a href="/invoices" class="menu">Invoices</a>
+        <a href="/customers"  class="menu">Customers</a>
+        <a href="/companies"  class="menu">Companies</a>
+        <div class="spacer"></div>
+       
+        <%= link_to "DASHBOARD", '/dashboard', :method => :delete ,class:"signup"  %>
+  
+        <% else %>
+
+        <a href="/"  class="menu">Home</a>
+        <a href="/about"  class="menu">About</a>
+        <a href="/pricing"  class="menu">Pricing</a>
+        <a href="/contact"  class="menu">Contact</a>
+        <div class="spacer"></div>
+        <%= link_to "Login", new_user_session_path , class:"signin" %> 
+        <a class="signup" href="/users/sign_up">Sign Up</a>
+        <% end %>
+    </nav>
   </header>
    <main> <%= yield %></main>
+
+   <div class="drawer" id="drawer">
+        <%if user_signed_in? %>
+        <a href="/dashboard" class="menu">Dashboard</a>
+        <a href="/invoices" class="menu">Invoices</a>
+        <a href="/customers"  class="menu">Customers</a>
+        <a href="/companies"  class="menu">Companies</a>
+        <div class="spacer"></div>
+        <%= button_to "Logout", destroy_user_session_path, :method => :delete ,class:"signup"  %>
+
+        <% else %>
+
+        <a href="/"  class="menu">Home</a>
+        <a href="/about"  class="menu">About</a>
+        <a href="/pricing"  class="menu">Pricing</a>
+        <a href="/contact"  class="menu">Contact</a>
+        <div class="spacer"></div>
+        <%= link_to "Login", new_user_session_path , class:"signin" %> 
+        <a class="signup" href="/users/sign_up">Sign Up</a>
+        <% end %>
+
+   </div>
+   <script>
+      
+      var drawer =document.getElementById("drawer");
+      var hamburger = document.getElementById('hamburger');
+      drawer.style.left="-300px";
+      function touchHandler(){
+        if(drawer.style.left=="-300px"){
+            drawer.style.left=0;
+        } else {
+            drawer.style.left="-300px";
+        }
+      }
+
+      hamburger.addEventListener('click', touchHandler)
+       
+
+     
+
+
+   </script>
   </body>
 </html>
