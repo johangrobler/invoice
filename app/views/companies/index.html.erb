@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Companies" %>
+<div class="header">
+  <h1>Companies</h1>
+  <%= link_to "New company", new_company_path %>
+</div>
+
+<div id="companies">
+
+  <table>
+  <% @companies.each do |company| %>
+    <tr> 
+        <td><%=link_to company.name ,company %></td>
+        <td><%=company.email%></td>
+        <td><%=company.phone%></td> 
+        <td><%=company.created_at%> </td>
+        <td> <%= link_to "Edit", edit_company_path(company) %></td>
+  <% end %>
+  </table>
+  
+</div>

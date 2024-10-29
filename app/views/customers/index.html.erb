@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Customers" %>
+<div class="header">
+<h1>Customers</h1>
+
+<%= link_to "New customer", new_customer_path %>
+</div>
+<div id="customers">
+  <table>
+  <% @customers.each do |customer| %>
+    <tr> 
+        <td><%=link_to customer.name ,customer %></td>
+        <td><%=customer.email%></td>
+        <td><%=customer.phone%></td> 
+        <td><%=customer.created_at%> </td>
+        <td> <%= link_to "Edit", edit_customer_path(customer) %></td>
+  <% end %>
+  </table>
+ 
+</div>
+

@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="header">
+  <h1>Invoice</h1>
+    <%= link_to "Edit", edit_invoice_path(@invoice) %> 
+  <%= link_to 'Download PDF', download_pdf_path, target: "_blank" %>
+  <%= link_to 'Send Invoice', download_pdf_path, target: "_blank" %>
+</div>
+
+
+
+<div class="invoice">
+  <div  class="invoice-details"> 
+      <%= render @invoice %>
+
+    <br>
+<h2>Items</h2>
+
+
+<table>
+  <% @invoice.items.all.each do |item|%>
+  <tr>
+      <td><%=item.description%></td>
+      <td><%=number_to_currency item.price, unit:"R "%></td>
+      <td><%=item.quantity%></td>
+      <td><%=number_to_currency item.quantity*item.price, unit:"R "%></td>
+      <td><%= link_to "Edit", edit_item_path(item) %> </td> 
+      <td><%= button_to "Delete", item, method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+  </div>
+  <div  class="invoice-item-add">
+  <h3>Add Item</h3>
+       <%= render "items/form", item: @item %>
+  </div>
+  </div>
+  </div>  
+
+ 

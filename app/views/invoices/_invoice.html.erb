@@ -1,0 +1,37 @@
+<div id="<%= dom_id invoice %>">
+  <p>
+    <strong>Company:</strong>
+    <%= link_to invoice.company.name, invoice.company %>
+  </p>
+
+  <p>
+    <strong>Customer:</strong>
+    <%= invoice.customer.name %>
+  </p>
+
+  <p>
+    <strong>Invoice date:</strong>
+    <%= invoice.invoice_date %>
+  </p>
+
+  <p>
+    <strong>Invoice no:</strong>
+    <%= invoice.invoice_no %>
+  </p>
+
+  <p>
+    <strong>Amount:</strong>
+    <%= invoice.amount %>
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= invoice.notes %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= invoice.status %>
+  </p>
+
+</div>

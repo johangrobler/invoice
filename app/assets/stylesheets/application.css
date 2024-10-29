@@ -1,0 +1,125 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+@property --main-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #13acf8;
+}
+
+@property --accent-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #109adf
+}
+
+input {
+  padding: 12px;
+  font-size: 16px;
+  width: 320px;
+  margin: 5px 0 16px;
+  border-radius: 3px;
+  border: 1px solid #d3d3d3;
+  outline: none;
+}
+
+textarea {
+  padding: 8px;
+  font-size: 16px;
+  width: 320px;
+  margin: 5px 0 14px;
+  height: 80px;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+}
+
+input[type="submit"] {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  color: white;
+  width: 320px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--accent-color);
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 40px 0;
+}
+
+td,
+th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 16px;
+}
+
+.invoice {
+  display: flex;
+}
+
+
+.invoice-details {
+  flex: 1;
+}
+
+header,
+main {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  flex: 1;
+}
+
+header a {
+  padding: 0 20px;
+  text-decoration: none;
+  color: #313131;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  flex: 1;
+}
+
+.header a {
+  border: 1px solid #aaa;
+  background-color: whitesmoke;
+  padding: 10px 20px;
+  margin-left: 20px;
+  color: #313131;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.header a:hover {
+
+  background-color: #ddd;
+}

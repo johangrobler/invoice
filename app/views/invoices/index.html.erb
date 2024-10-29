@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Invoices" %>
+
+<div class="header">
+  <h1>Invoices</h1>
+  <%= link_to "New invoice", new_invoice_path %>
+</div>
+
+<div id="invoices"> 
+  <table>
+    <tr>
+        <td> </td>
+        <td>Date</td>
+        <td>Customer</td>
+        <td>Company</td>
+        <td>Amount</td>
+        <td>Status</td>
+  <% @invoices.each do |invoice| %>
+    <tr>
+
+        <td> <%= link_to "View",invoice %></td>
+        <td><%=invoice.invoice_date%></td>
+        <td><%=invoice.customer.name%></td>
+        <td><%=invoice.company.name%></td>
+        <td><%=invoice.amount%> </td> 
+        <td><%=invoice.status%> </td>
+        <td> <%= link_to "Edit", edit_invoice_path(invoice) %></td>
+  <% end %>
+  </table>
+</div>
+
