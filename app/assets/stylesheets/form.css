@@ -9,6 +9,7 @@ form h1 {
 form input {
   padding: 10px;
   font-size: 16px;
+  font-weight: 500;
   width: 320px;
   margin: 4px 0 16px;
   border-radius: 3px;

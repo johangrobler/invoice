@@ -61,7 +61,7 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   # !!!!! config.action_mailer.default_url_options = { host: "example.com" }
 
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 } 
+  config.action_mailer.default_url_options = { host: "https://quoteme.co.za"  } 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
   #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
@@ -89,4 +89,18 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+   # config.action_mailer.delivery_method = :letter_opener
+   config.action_mailer.perform_deliveries = true
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+     address:              'smtpout.secureserver.net', # GoDaddy SMTP server
+     port:                 587,                         # SMTP port for GoDaddy
+     domain:               'ideapp.co.za',            # Your domain
+     user_name:            ENV['EMAIL_USERNAME']  ,    # GoDaddy email
+     password:             ENV['EMAIL_PASSWORD'] ,             # GoDaddy email password
+     authentication:       'plain',                     # Authentication type
+     enable_starttls_auto: true                         # Enable TLS
+   }
+ 
 end

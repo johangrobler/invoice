@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "invoice/:id" , to: "invoice#show" 
   resources :messages
   get "dashboard/index"
   get "home/index"

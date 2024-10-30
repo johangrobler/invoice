@@ -1,0 +1,62 @@
+.line-item {
+
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.line-item .description {
+  flex: 1;
+  font-weight: bold;
+}
+
+.line-item .details {
+
+  display: flex;
+
+}
+
+.line-item .amounts {
+
+  display: flex;
+  flex: 1;
+
+}
+
+.line-item .amounts div {
+  margin-right: 20px;
+  text-align: right;
+}
+
+.line-item .actions {
+
+  display: flex;
+
+}
+
+.line-item .actions a {
+  padding: 0 10px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .line-item {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #d3d3d3;
+    flex-direction: column;
+  }
+
+  .line-item .amounts {
+
+    display: flex;
+    flex: 1;
+  }
+
+  .line-item .description {
+    flex: 1;
+    font-weight: bold;
+    margin-bottom: 20px;
+    ;
+  }
+}

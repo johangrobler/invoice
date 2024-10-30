@@ -41,6 +41,9 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(invoice_params)
     @invoice.user = current_user
     @invoice.status = "new"
+    
+    require 'securerandom'
+    @invoice.token = SecureRandom.uuid
 
     respond_to do |format|
       if @invoice.save

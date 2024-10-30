@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_30_141637) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_30_215835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.bigint "user_id", null: false
+    t.string "description"
+    t.string "icon"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_activities_on_invoice_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "banks", force: :cascade do |t|
     t.string "name"
@@ -63,8 +75,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_30_141637) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "token"
     t.index ["company_id"], name: "index_invoices_on_company_id"
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
+    t.index ["token"], name: "index_invoices_on_token"
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
@@ -109,6 +123,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_30_141637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "invoices"
+  add_foreign_key "activities", "users"
   add_foreign_key "companies", "banks"
   add_foreign_key "invoices", "companies"
   add_foreign_key "invoices", "customers"

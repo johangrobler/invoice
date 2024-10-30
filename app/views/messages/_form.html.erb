@@ -10,11 +10,15 @@
       </ul>
     </div>
   <% end %>
+ 
+    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :invoice_id %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
   </div>
+
 
   <div>
     <%= form.label :subject, style: "display: block" %>
@@ -23,23 +27,11 @@
 
   <div>
     <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
+    <%= form.text_area :body %>
   </div>
-
-  <div>
-    <%= form.label :invoice_id, style: "display: block" %>
-    <%= form.number_field :invoice_id %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+  
+  
+  
 
   <div>
     <%= form.submit %>

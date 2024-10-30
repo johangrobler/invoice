@@ -39,6 +39,16 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  #config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtpout.secureserver.net', # GoDaddy SMTP server
+    port:                 587,                         # SMTP port for GoDaddy
+    domain:               'ideapp.co.za',            # Your domain
+    user_name:            ENV['EMAIL_USERNAME']  ,    # GoDaddy email
+    password:             ENV['EMAIL_PASSWORD'] ,             # GoDaddy email password
+    authentication:       'plain',                     # Authentication type
+    enable_starttls_auto: true                         # Enable TLS
+  }
 
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 } 

@@ -3,8 +3,6 @@
 <div class="header">
   <h1>Invoice</h1>
     <%= link_to "Edit", edit_invoice_path(@invoice) %> 
-  <%= link_to 'Download PDF', download_pdf_path, target: "_blank" %>
-  <%= link_to 'Send Invoice', new_message_path  %>
 </div>
 
 
@@ -14,25 +12,42 @@
       <%= render @invoice %>
 
     <br>
+    <div class="header">
       <h2>Items</h2>
- 
+      <a >ADD</a>
+    </div>
       <%= render "items/form", item: @item %> 
-     
-<table>
+      <br>
   <% @invoice.items.all.each do |item|%>
-  <tr>
-      <td><%=item.description%></td>
-      <td><%=number_to_currency item.price, unit:"R "%></td>
-      <td><%=item.quantity%></td>
-      <td><%=number_to_currency item.quantity*item.price, unit:"R "%></td>
-      <td><%= link_to "Edit", edit_item_path(item) %> </td> 
-      <td><%= button_to "Delete", item, method: :delete %></td> 
-  </tr>
-  <% end %>
-</table> 
+  <div class="line-item">
+
+      <div class="description"><%=item.description%></div>
+
+          <div class="details">
+          <div class="amounts">
+          
+            <div><%=number_to_currency item.price, unit:"R "%></div>
+            <div>x <%= item.quantity%></div>
+            <div><%=number_to_currency item.quantity*item.price, unit:"R "%></div>
+          </div>
+            <div class="actions">
+              <%= link_to "Edit", edit_item_path(item) %>
+              <%= button_to "Delete", item, method: :delete %>
+            </div>
+
+          </div>
+      </div>
+
+
+ 
+  <% end %> 
   </div>
   <div  class="invoice-actions">
   <h3>Invoice Actions</h3> 
+
+  <%= link_to 'Download PDF', download_pdf_path, target: "_blank" %>
+  <%= link_to 'Send Invoice', new_message_path(id:@invoice)  %>
+  <%= link_to 'Preview', "/invoice/#{@invoice.token}?action=none"  %>
   </div>
   </div>
   </div>  

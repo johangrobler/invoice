@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_message, only: %i[ show edit update destroy ]
 
   # GET /messages or /messages.json
@@ -12,7 +14,20 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    invoice = Invoice.find(params[:id])
     @message = Message.new
+    @message.user = current_user
+    @message.invoice = invoice
+
+    if invoice
+
+     @message.email = invoice.customer.email
+     @message.status = "new"
+
+     @message.subject = "Here is your invoice: #" + invoice.id.to_s + Time.now.to_s
+     @message.body = "Please find attached your invoice for: " + invoice.customer.name.to_s + ". Invoice total: $" + invoice.amount.to_s
+
+    end
   end
 
   # GET /messages/1/edit
@@ -22,9 +37,12 @@ class MessagesController < ApplicationController
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params)
-
+    @message.user = current_user
     respond_to do |format|
       if @message.save
+
+        @message.send_invoice_email 
+
         format.html { redirect_to @message, notice: "Message was successfully created." }
         format.json { render :show, status: :created, location: @message }
       else

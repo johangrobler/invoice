@@ -48,4 +48,26 @@
     flex-direction: column;
   }
 
+  .form-flex-row {
+    margin: 20px 0 0px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .i-description {
+    width: 300px;
+  }
+
+  .i-price {
+    width: 300px;
+  }
+
+  .i-qty {
+    width: 300px;
+  }
+
+  .i-add {
+    margin-top: 100px;
+  }
+
 }
