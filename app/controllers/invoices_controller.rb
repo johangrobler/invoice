@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[ show edit update destroy  download_pdf]
+  before_action :set_invoice, only: %i[ show edit update destroy  download_pdf send_invoice_email]
 
   # GET /invoices or /invoices.json
   def index
@@ -12,6 +12,12 @@ class InvoicesController < ApplicationController
 
     @item = Item.new
     @item.invoice  =  @invoice
+  end
+
+  def send_invoice_email
+
+    UserMailer.welcome_email(@invoice.user).deliver_now
+    redirect_to @invoice, notice: "Invoice was successfully created."
   end
 
   def download_pdf
@@ -73,7 +79,12 @@ class InvoicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
-      @invoice = Invoice.find(params.expect(:id))
+      @invoice = current_user.invoices.find(params.expect(:id))
+      
+      rescue ActiveRecord::RecordNotFound => e
+ #render json: { error: e.message }, status: :not_found
+        render file: Rails.public_path.join('404.html')
+ 
     end
 
     # Only allow a list of trusted parameters through.

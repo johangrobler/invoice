@@ -3,17 +3,77 @@
 
 <div class="header">
 <h1>Dashboard</h1>
+ <%if  @customer_count > 0 && @company_count > 0  %>
 <a href="/invoices/new">Create Invoice</a>
+<% end %>
+</div>
+<div class="dashboard-flex">
+  <div class="dashboard">
+
+      <%if  @company_count == 0%>
+      <div class="first">
+        <h2>Add your first Company</h1>
+        <p>You can have more than one company that you want to send invoices from</p>  
+        <%= link_to "Add company", new_company_path,class:"button" %>
+      </div>
+      <% end %>
+
+      <%if  @customer_count == 0%>
+      <div class="first">
+        <h2>Add your first Customer</h1>
+        <p>You can have unlimited customers that you want to send invoices to</p>  
+        <%= link_to "Add customer", new_customer_path ,class:"button"%>
+      </div>  
+      <% end %>
+
+
+      <div class="counters-flex">
+
+        <div class="counters">
+          <%if  @company_count >  0%>
+
+                <div class="count">
+                    <div class="number">  <%=@company_count%></div>
+                    <div> Companies </div>
+                </div>
+          <% end %>
+
+          <%if  @customer_count >  0%>
+
+                <div class="count">
+                    <div class="number">  <%=@customer_count%></div>
+                    <div> Customers </div>
+                </div>
+          <% end %>
+
+          <%if  @invoice_count > 0%>
+
+                <div class="count">
+                    <div class="number">  <%=@invoice_count%></div>
+                    <div> Invoices </div>
+                </div>
+          <% end %>
+        </div>
+        <%if  @invoice_count > 0%>
+         <div class="amount">
+                <div class="number">  <%=number_to_currency @revenue , unit:"R" %></div>
+                <div> Revenue </div>
+            </div>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="sponsor">
+
+  <h2>Become a Sponsor</h2>
+
+  <br>
+  <a href="https://paystack.com/pay/1lyjtmikls" >SPONSOR PROJECT</a>
+
+ 
+
+ 
+
+</div>
 </div>
 
-
-<h2>Become a Sponsor</h2>
-
-<br>
-<a href="https://paystack.com/pay/1lyjtmikls" class="button" >SPONSOR PROJECT</a>
-
-<p>Powered by PayStack</p>
-
-
-<h2>Account</h2> 
-<%= button_to "Logout", destroy_user_session_path, :method => :delete ,class:"signup"  %>

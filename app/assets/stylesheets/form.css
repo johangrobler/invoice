@@ -1,6 +1,5 @@
 form {
-  width: 360px;
-  margin: 0 auto;
+  max-width: 360px;
 }
 
 form h1 {
@@ -8,10 +7,10 @@ form h1 {
 }
 
 form input {
-  padding: 12px;
-  font-size: 18px;
+  padding: 10px;
+  font-size: 16px;
   width: 320px;
-  margin: 5px 0 16px;
+  margin: 4px 0 16px;
   border-radius: 3px;
   border: 1px solid #d3d3d3;
   background-color: whitesmoke;
@@ -21,7 +20,7 @@ select,
 textarea {
   background-color: whitesmoke;
   padding: 12px;
-  font-size: 18px;
+  font-size: 16px;
   width: 320px;
   margin: 5px 0 16px;
   border-radius: 3px;

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   get "dashboard/index"
   get "home/index"
   get "about" , to: "home#about"
@@ -26,4 +27,8 @@ Rails.application.routes.draw do
   root "home#index"
   
   get 'invoices/:id/download', to: 'invoices#download_pdf', as: 'download_pdf'
+  
+  # send_invoice_email
+  get 'invoices/:id/send_invoice_email', to: 'invoices#send_invoice_email', as: 'send_invoice_email'
+
 end

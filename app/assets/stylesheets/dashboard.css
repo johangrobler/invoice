@@ -1,0 +1,105 @@
+.dashboard-flex {
+  display: flex;
+}
+
+.dashboard {
+  flex: 1
+}
+
+
+.sponsor {
+  padding: 40px;
+  margin-left: 40px;
+  border-left: 1px solid #d3d3d3;
+
+}
+
+.first {
+
+  background-color: #F7F7F7;
+  padding: 40px;
+  border-left: 1px solid #d3d3d3;
+
+  margin-bottom: 40px;
+}
+
+.first p {
+  margin: 40px 0;
+}
+
+.counters-flex {
+
+  margin: 40px 0;
+  display: flex;
+}
+
+.counters {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.counters .count {
+  background-color: turquoise;
+  height: 120px;
+  width: 120px;
+  text-align: center;
+  border-radius: 4px;
+  color: #313131;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 40px;
+}
+
+.counters .count .number {
+  margin: 30px 0 10px;
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.counters-flex .amount {
+  height: 120px;
+  text-align: center;
+  border-radius: 4px;
+  color: #313131;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  align-items: right;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  flex: 1;
+}
+
+.counters-flex .amount .number {
+  margin: 30px 0 10px;
+  font-size: 40px;
+  line-height: 1.2;
+
+}
+
+
+
+@media screen and (max-width: 800px) {
+  .dashboard-flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .counters-flex {
+
+    margin: 0px 0 40px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .sponsor {
+    padding: 40px;
+    margin-left: 0px;
+    border-left: 1px solid #d3d3d3;
+
+  }
+
+}

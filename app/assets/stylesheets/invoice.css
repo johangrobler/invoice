@@ -4,17 +4,21 @@
 
 
 .invoice-details {
+  flex: 2;
+}
+
+.invoice-actions {
   flex: 1;
 }
 
 .form-flex-row {
-  margin: 20px 0 100px -20px;
+  margin: 20px 0 0px 0px;
   display: flex;
   flex-direction: row;
 }
 
 .form-flex-row input {
-  margin: 5px 0 10px 0;
+  margin: 5px 0 0px 0;
 
 }
 
